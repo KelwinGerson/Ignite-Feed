@@ -1,19 +1,17 @@
+import {HtmlHTMLAttributes, ImgHTMLAttributes} from 'react'
 import styles from './Avatar.module.css'
 
-interface AvatarProps {
+interface AvatarProps extends ImgHTMLAttributes<HTMLImageElement>{
     hasBorder?: boolean;
-    src: string;
-    alt?: string;
 }
 
 // Com a desestruturação javascript podemos aplicar valores default
-export function Avatar({hasBorder = true, src, alt} : AvatarProps) {
+export function Avatar({hasBorder = true, ...props} : AvatarProps) {
     return (
         <img 
             // if ternário
             className={hasBorder ? styles.avatarWithBorder : styles.avatar } 
-            src={src}
-            alt={alt}
+            {...props}
         /> 
     );
 };
